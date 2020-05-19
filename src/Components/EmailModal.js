@@ -14,7 +14,7 @@ import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 
 function EmailModal(props) {
-	const { email, createEmail, user, isOpen, setIsOpen } = props;
+	const { email, isOpen, setIsOpen } = props;
 	const [starred, setStarred] = useState(false);
 	const [foldered, setFoldered] = useState(false);
 
@@ -103,6 +103,10 @@ function EmailModal(props) {
 	);
 }
 
-EmailModal.propTypes = {};
+EmailModal.propTypes = {
+	email: PropTypes.object.isRequired,
+	isOpen: PropTypes.bool.isRequired,
+	setIsOpen: PropTypes.func.isRequired
+};
 
 export default EmailModal;

@@ -36,6 +36,10 @@ function UnitProgress(props) {
 	);
 }
 
-UnitProgress.propTypes = {};
+UnitProgress.propTypes = {
+	value: PropTypes.number.isRequired,
+	max: PropTypes.number.isRequired,
+	allComplete: PropTypes.bool.isRequired
+};
 
 export default UnitProgress;

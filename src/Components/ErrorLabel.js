@@ -1,31 +1,20 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
-
-
-
 const ErrorLabel = props => {
-
-    const useStyles = makeStyles(theme => ({
+	const useStyles = makeStyles(theme => ({
 		label: {
 			color: "red",
-            fontWeight: "bolder",
-            margin: "1% 0 4% 0",
+			fontWeight: "bolder",
+			margin: "1% 0 4% 0"
 		}
 	}));
 
 	const classes = useStyles();
 
-    const {children} =  props;
+	const { children } = props;
 
-    return (
-        <label className={classes.label}> 
-            {children}
-        </label>
-    )
-}
+	return <label className={classes.label}>{children}</label>;
+};
 
-
-
-export default ErrorLabel
+export default ErrorLabel;

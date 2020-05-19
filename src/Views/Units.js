@@ -20,14 +20,18 @@ function Units(props) {
 		const getAllUnits = async () => {
 			let un = [];
 			let unArray = [];
-			const allEventRef = await readUnits();
-			allEventRef.forEach(event => {
-				un = { ...event.data(), ...{ id: event.id } };
-				if (un.userId == user.uid) {
-					unArray.push(un);
-					setMyUnits(unArray);
-				}
-			});
+			try {
+				const allEventRef = await readUnits();
+				allEventRef.forEach(event => {
+					un = { ...event.data(), ...{ id: event.id } };
+					if (un.userID === user.uid) {
+						unArray.push(un);
+						setMyUnits(unArray);
+					}
+				});
+			} catch (e) {
+				console.log(e);
+			}
 		};
 
 		getAllUnits();
@@ -40,7 +44,6 @@ function Units(props) {
 			color: "white",
 			height: "100%",
 			padding: "0.5rem",
-			height: "100%",
 			marginBottom: "1rem"
 		}
 	}));
@@ -74,6 +77,13 @@ function Units(props) {
 	);
 }
 
-Units.propTypes = {};
+Units.propTypes = {
+	readUnits: PropTypes.func.isRequired,
+	readUnitAssignment: PropTypes.func.isRequired,
+	readUnitAssignmentTask: PropTypes.func.isRequired,
+	checkUnitAssignment: PropTypes.func.isRequired,
+	checkUnitAssignmentTask: PropTypes.func.isRequired,
+	user: PropTypes.object.isRequired
+};
 
 export default Units;

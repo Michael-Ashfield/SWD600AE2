@@ -3,15 +3,20 @@ import PropTypes from "prop-types";
 import Checkbox from "@material-ui/core/Checkbox";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
 
 function UnitTask(props) {
-	const { task, assignment, unit, checkUnitAssignmentTask, handleChange } = props;
+	const {
+		task,
+		assignment,
+		unit,
+		checkUnitAssignmentTask,
+		handleChange
+	} = props;
 	const [complete, setComplete] = useState(task.complete);
 
 	useEffect(() => {
-        checkUnitAssignmentTask(task.id, assignment.id, unit.id, complete)
-        handleChange();
+		checkUnitAssignmentTask(task.id, assignment.id, unit.id, complete);
+		handleChange();
 	}, [complete]);
 
 	return (
@@ -32,6 +37,12 @@ function UnitTask(props) {
 	);
 }
 
-UnitTask.propTypes = {};
+UnitTask.propTypes = {
+	task: PropTypes.object.isRequired,
+	assignment: PropTypes.object.isRequired,
+	unit: PropTypes.object.isRequired,
+	checkUnitAssignmentTask: PropTypes.func.isRequired,
+	handleChange: PropTypes.func.isRequired
+};
 
 export default UnitTask;

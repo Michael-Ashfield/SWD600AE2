@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import UnitAssignment from "./UnitAssignment";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import theme from "../config/materialTheme";
 import { makeStyles } from "@material-ui/core/styles";
 
 function UnitBox(props) {
@@ -31,7 +30,7 @@ function UnitBox(props) {
 
 	useEffect(() => {
 		getAssignments();
-	}, []);
+	}, [user]);
 
 	const useStyles = makeStyles(theme => ({
 		stCard: {
@@ -71,6 +70,13 @@ function UnitBox(props) {
 	);
 }
 
-UnitBox.propTypes = {};
+UnitBox.propTypes = {
+	user: PropTypes.object.isRequired,
+	unit: PropTypes.object.isRequired,
+	readUnitAssignment: PropTypes.func.isRequired,
+	readUnitAssignmentTask: PropTypes.func.isRequired,
+	checkUnitAssignment: PropTypes.func.isRequired,
+	checkUnitAssignmentTask: PropTypes.func.isRequired
+};
 
 export default UnitBox;

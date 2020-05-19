@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
-import IconButton from "@material-ui/core/IconButton";
 import OpenInBrowserIcon from "@material-ui/icons/OpenInBrowser";
 import EmailModal from "./EmailModal";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
 function EmailBox(props) {
-	const { email, createEmail, user } = props;
+	const { email } = props;
 
 	const [isOpen, setIsOpen] = useState(false);
 
@@ -23,11 +22,6 @@ function EmailBox(props) {
 		},
 		emailSubject: {
 			padding: "0 10px 0"
-		},
-		cardStyle: {
-			display: "flex",
-			justifyContent: "center",
-			alignItems: "center"
 		},
 		stIcon: {
 			color: theme.palette.primary.main

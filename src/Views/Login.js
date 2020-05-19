@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import { makeStyles, styled } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Form from "../Components/LoginForm";
-import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import CardContent from "@material-ui/core/CardContent";
-import CardHeader from "@material-ui/core/CardHeader";
+import Typography from "@material-ui/core/Typography";
 
 
 function Login(props) {
@@ -17,7 +16,6 @@ function Login(props) {
 
     try {
       const user = await signInEmailUser(email, password);
-      console.log(user);
     } catch (error) {
       debugger;
       setError(error.message);
@@ -43,9 +41,9 @@ function Login(props) {
   return (
     <Grid container justify="center" alignItems="center" className={classes.login}>
     <div>
-      <h1 className={classes.header}>
+      <Typography variant="h1" className={classes.header}>
         MySolent
-      </h1>
+      </Typography>
       <CardContent>
         <Form
           onSocialLogin={handleSocialLogin}

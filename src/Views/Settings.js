@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import Button from "../Components/Button";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import theme from "../config/materialTheme";
 
 function Settings(props) {
 	const { signOut } = props;
@@ -19,7 +18,6 @@ function Settings(props) {
 			color: "white",
 			height: "100%",
 			padding: "0.5rem",
-			height: "100%",
 			marginBottom: "1rem"
 		},
 		main: {
@@ -42,6 +40,8 @@ function Settings(props) {
 	);
 }
 
-Settings.propTypes = {};
+Settings.propTypes = {
+	signOut: PropTypes.func.isRequired
+};
 
 export default Settings;

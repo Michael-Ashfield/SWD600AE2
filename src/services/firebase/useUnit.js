@@ -1,6 +1,5 @@
 function useUnit(fStore) {
 	const ref = fStore().collection("units");
-	const refAssignment = fStore().collection("assignment");
 	const readUnits = () => ref.get();
 	const readUnitAssignment = id =>
 		ref

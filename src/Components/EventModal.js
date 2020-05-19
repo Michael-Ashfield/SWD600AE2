@@ -5,11 +5,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import OpenBrowser from "./OpenBrowser";
 import Typography from "@material-ui/core/Typography";
 import Close from "./Close";
-import theme from "../config/materialTheme";
 import mapJM from "../assets/mapJM.jpg";
 import mapRM from "../assets/mapRM.jpg";
-
-
 
 function EventModal(props) {
 	const { isOpen, setIsOpen, event } = props;
@@ -17,8 +14,8 @@ function EventModal(props) {
 
 	useEffect(() => {
 		/*
-    This would be adjusted for each building with high quality versions of the images
-    */
+   		 This would be adjusted for each building with high quality versions of the images
+    	*/
 		switch (event.building) {
 			case "RM":
 				setBuildingMap(mapRM);
@@ -78,6 +75,10 @@ function EventModal(props) {
 	);
 }
 
-EventModal.propTypes = {};
+EventModal.propTypes = {
+	isOpen: PropTypes.bool.isRequired,
+	setIsOpen: PropTypes.func.isRequired,
+	event: PropTypes.object.isRequired
+};
 
 export default EventModal;

@@ -13,8 +13,6 @@ function UnitAssignment(props) {
 		assignment,
 		readUnitAssignmentTask,
 		unit,
-		user,
-		checkUnitAssignment,
 		checkUnitAssignmentTask
 	} = props;
 	const [isOpen, setIsOpen] = useState(false);
@@ -122,7 +120,7 @@ function UnitAssignment(props) {
 				setIsOpen={setIsOpen}
 				tasks={tasks}
 				completed={completed}
-				allComplete={setAllComplete}
+				allComplete={allComplete}
 				unit={unit}
 				assignment={assignment}
 				checkUnitAssignmentTask={checkUnitAssignmentTask}
@@ -132,6 +130,11 @@ function UnitAssignment(props) {
 	);
 }
 
-UnitAssignment.propTypes = {};
+UnitAssignment.propTypes = {
+	assignment: PropTypes.object.isRequired,
+	readUnitAssignmentTask: PropTypes.func.isRequired,
+	unit: PropTypes.object.isRequired,
+	checkUnitAssignmentTask: PropTypes.func.isRequired
+};
 
 export default UnitAssignment;

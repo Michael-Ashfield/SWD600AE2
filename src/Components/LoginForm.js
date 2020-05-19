@@ -1,17 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import Button from "../Components/Button";
 import ErrorLabel from "../Components/ErrorLabel";
 import { useForm } from "react-hook-form";
 import { RHFInput } from "react-hook-form-input";
-import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-
 import * as yup from "yup";
 
 function LoginForm(props) {
-	const { buttonText, onSubmit, serverError, onSocialLogin } = props;
-	const [displayEmail, setDisplayEmail] = useState(true);
+	const { buttonText, onSubmit, serverError } = props;
 
 	const loginFormSchema = yup.object().shape({
 		email: yup
@@ -27,11 +24,6 @@ function LoginForm(props) {
 	const { register, handleSubmit, errors, setValue } = useForm({
 		validationSchema: loginFormSchema
 	});
-
-	const handleClick = e => {
-		e.preventDefault();
-		setDisplayEmail(!displayEmail);
-	};
 
 	const handleInnerSubmit = data => {
 		console.log(data);
@@ -84,15 +76,9 @@ function LoginForm(props) {
 }
 
 LoginForm.propTypes = {
-	buttonText: PropTypes.string,
+	buttonText: PropTypes.string.isRequired,
 	onSubmit: PropTypes.func.isRequired,
-	onSocialLogin: PropTypes.func.isRequired,
 	error: PropTypes.string
-};
-
-LoginForm.defaultProps = {
-	buttonText: "JOIN",
-	serverError: ""
 };
 
 export default LoginForm;

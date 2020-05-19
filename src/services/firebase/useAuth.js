@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
+import { useState } from "react";
 
 function useAuth(fbAuth) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

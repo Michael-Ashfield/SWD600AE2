@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import Modal from "@material-ui/core/Modal";
 import moment from "moment";
@@ -9,7 +9,6 @@ import UnitProgress from "./UnitProgress";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import OpenBrowser from "./OpenBrowser";
-import theme from "../config/materialTheme";
 import Close from "./Close";
 
 function UnitModal(props) {
@@ -112,6 +111,16 @@ function UnitModal(props) {
 	);
 }
 
-UnitModal.propTypes = {};
+UnitModal.propTypes = {
+	isOpen: PropTypes.bool.isRequired,
+	setIsOpen: PropTypes.func.isRequired,
+	tasks: PropTypes.array.isRequired,
+	assignment: PropTypes.object.isRequired,
+	unit: PropTypes.object.isRequired,
+	checkUnitAssignmentTask: PropTypes.func.isRequired,
+	handleChange: PropTypes.func.isRequired,
+	completed: PropTypes.number.isRequired,
+	allComplete: PropTypes.bool.isRequired
+};
 
 export default UnitModal;

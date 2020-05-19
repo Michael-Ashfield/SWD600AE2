@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Header from "./Components/Header";
 import Loader from "./Components/Loader";
 import { Switch, Route, useLocation, Redirect } from "react-router-dom";
-import { ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "./config/materialTheme.js";
 
 import Events from "./Views/Events";
@@ -86,7 +86,7 @@ function App() {
 		readUnitAssignment,
 		readUnitAssignmentTask,
 		checkUnitAssignment,
-		checkUnitAssignmentTask,
+		checkUnitAssignmentTask
 	} = useUnit(firebase.firestore);
 
 	const { readEmails, createEmail } = useEmail(firebase.firestore);
@@ -100,10 +100,7 @@ function App() {
 			<ThemeProvider theme={theme}>
 				{location.pathname !== "/join" &&
 					location.pathname !== "/login" && (
-						<Header
-							signOut={signOut}
-							user={user}
-						/>
+						<Header signOut={signOut} user={user} />
 					)}
 				<div
 					style={{
@@ -144,13 +141,22 @@ function App() {
 							authenticated={isAuthenticated}
 							path="/units"
 						>
-							<Units readUnits={readUnits} readUnitAssignment={readUnitAssignment} readUnitAssignmentTask={readUnitAssignmentTask} checkUnitAssignment={checkUnitAssignment} checkUnitAssignmentTask={checkUnitAssignmentTask} user={user} />
+							<Units
+								readUnits={readUnits}
+								readUnitAssignment={readUnitAssignment}
+								readUnitAssignmentTask={readUnitAssignmentTask}
+								checkUnitAssignment={checkUnitAssignment}
+								checkUnitAssignmentTask={
+									checkUnitAssignmentTask
+								}
+								user={user}
+							/>
 						</Protected>
 						<Protected
 							authenticated={isAuthenticated}
 							path="/settings"
 						>
-							<Settings user={user} signOut={signOut}/>
+							<Settings user={user} signOut={signOut} />
 						</Protected>
 					</Switch>
 				</div>

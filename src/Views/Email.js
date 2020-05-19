@@ -4,7 +4,6 @@ import EmailBox from "../Components/EmailBox";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
-import theme from "../config/materialTheme";
 
 function Email(props) {
 	const { readEmails, createEmail, user } = props;
@@ -15,23 +14,27 @@ function Email(props) {
 		const getAllEmails = async () => {
 			let emailsNewArr = [];
 			let emailsOldArr = [];
-			const allEmailRef = await readEmails();
-			allEmailRef.forEach(email => {
-				let em = { ...email.data() };
-				if (em.userId == user.uid) {
-					if (em.seen === false) {
-						emailsNewArr.push(em);
-						setEmailsNew(emailsNewArr);
-					} else {
-						emailsOldArr.push(em);
-						setEmailsOld(emailsOldArr);
+			try {
+				const allEmailRef = await readEmails();
+				allEmailRef.forEach(email => {
+					let em = { ...email.data() };
+					if (em.to === user.uid) {
+						if (em.seen === false) {
+							emailsNewArr.push(em);
+							setEmailsNew(emailsNewArr);
+						} else {
+							emailsOldArr.push(em);
+							setEmailsOld(emailsOldArr);
+						}
 					}
-				}
-			});
+				});
+			} catch (e) {
+				console.log(e);
+			}
 		};
 
 		getAllEmails();
-	}, []);
+	}, [user]);
 
 	const useStyles = makeStyles(theme => ({
 		background: {
@@ -40,7 +43,6 @@ function Email(props) {
 			color: "white",
 			height: "100%",
 			padding: "0.5rem",
-			height: "100%",
 			marginBottom: "1rem"
 		},
 		emailGroup: {
@@ -49,7 +51,6 @@ function Email(props) {
 			color: "white",
 			height: "100%",
 			padding: "0.5rem",
-			height: "100%",
 			margin: "1rem 0.5rem"
 		}
 	}));
@@ -94,6 +95,10 @@ function Email(props) {
 	);
 }
 
-Email.propTypes = {};
+Email.propTypes = {
+	readEmails: PropTypes.func.isRequired,
+	createEmail: PropTypes.func.isRequired,
+	user: PropTypes.object.isRequired
+};
 
 export default Email;

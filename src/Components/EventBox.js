@@ -9,7 +9,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 
 function EventBox(props) {
-	const { user, event, isToday } = props;
+	const { event, isToday } = props;
 	const [isOpen, setIsOpen] = useState(false);
 
 	const openModal = e => {
@@ -66,6 +66,9 @@ function EventBox(props) {
 	);
 }
 
-EventBox.propTypes = {};
+EventBox.propTypes = {
+	event: PropTypes.object.isRequired,
+	isToday: PropTypes.bool.isRequired
+};
 
 export default EventBox;

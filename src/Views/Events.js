@@ -5,7 +5,6 @@ import Grid from "@material-ui/core/Grid";
 import moment from "moment";
 import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
-import theme from "../config/materialTheme";
 
 function Events(props) {
 	const { readEvents, user } = props;
@@ -19,7 +18,7 @@ function Events(props) {
 			const allEventRef = await readEvents();
 			allEventRef.forEach(event => {
 				let ev = { ...event.data() };
-				if (ev.userId == user.uid) {
+				if (ev.userId === user.uid) {
 					if (moment(ev.date.seconds, "X").isSame(moment(), "day")) {
 						eventToday.push(ev);
 						setToday(eventToday);
@@ -44,7 +43,6 @@ function Events(props) {
 			color: "white",
 			height: "100%",
 			padding: "0.5rem",
-			height: "100%",
 			marginBottom: "1rem"
 		},
 		background2: {
@@ -53,7 +51,6 @@ function Events(props) {
 			color: "white",
 			height: "100%",
 			padding: "0.5rem",
-			height: "100%"
 		}
 	}));
 
@@ -92,6 +89,9 @@ function Events(props) {
 	);
 }
 
-Events.propTypes = {};
+Events.propTypes = {
+	readEvents: PropTypes.func.isRequired,
+	user: PropTypes.object.isRequired
+};
 
 export default Events;
